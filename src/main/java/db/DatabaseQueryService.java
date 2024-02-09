@@ -124,7 +124,6 @@ public class DatabaseQueryService {
     public List<ProjectPrice> calculateProjectPrice() throws IOException, SQLException {
         List<ProjectPrice> result = new ArrayList<>();
 
-        // Read SQL file
         String sqlQuery = "";
         try {
             sqlQuery = SqlFileReader.readSqlFile(PROJECT_PRICE_QUERY);
@@ -133,12 +132,10 @@ public class DatabaseQueryService {
             return result; // Return empty list if file not found
         }
 
-        // Execute query
         try (Connection connection = Database.getInstance().getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)) {
 
-            // Process result set
             while (resultSet.next()) {
                 ProjectPrice projectPrice = new ProjectPrice();
                 projectPrice.setClientName(resultSet.getString("client_name"));
