@@ -22,7 +22,7 @@ public class DatabaseQueryService {
 
     public List<MaxProjectCountClient> findMaxProjectsClient() throws IOException, SQLException {
         ArrayList<MaxProjectCountClient> result = new ArrayList<>();
-        //read file
+        
         try{
              sqlQuery = SqlFileReader.readSqlFile(MAX_PROJECTS_CLIENT_QUERY);
         }
@@ -30,12 +30,12 @@ public class DatabaseQueryService {
             e.printStackTrace();
         }
 
-        // Execute query
+        
         try (Connection connection = Database.getInstance().getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)) {
 
-            // Process result set
+            
             while (resultSet.next()) {
                 MaxProjectCountClient client = new MaxProjectCountClient();
                 client.setName(resultSet.getString("name"));
@@ -129,7 +129,7 @@ public class DatabaseQueryService {
             sqlQuery = SqlFileReader.readSqlFile(PROJECT_PRICE_QUERY);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return result; // Return empty list if file not found
+            return result; 
         }
 
         try (Connection connection = Database.getInstance().getConnection();
