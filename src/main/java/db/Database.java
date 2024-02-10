@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    private static final String URL = "jdbc:h2:D:\\JavaProjectsUltimate\\Task_6\\task2";
+    private static final String URL = "jdbc:h2:./task2";
     private static final String USER = "";
     private static final String PASSWORD = "";
 
